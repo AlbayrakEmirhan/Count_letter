@@ -25,7 +25,7 @@ class Program
         {
             if (char.IsLetter(s))
             {
-                if (harfSayilari.ContainsKey(s) && harfSayilari.ContainsKey(s))
+                if (harfSayilari.ContainsKey(s))
                 {
                     harfSayilari[s]++;
                 }
@@ -34,7 +34,19 @@ class Program
                      }
             }
         }
-        foreach(var hs in harfSayilari) 
+        /*foreach (var hs in harfSayilari) 
+        {
+            List<int> values = new List<int>(harfSayilari.Values);
+            values.Sort();
+            values.Reverse();
+            foreach (var item in values)
+            {
+                Console.WriteLine("{0} harfinin sayısı : {1}", hs.Key, item);
+            }
+        }
+        */
+        var values = harfSayilari.OrderByDescending(x => x.Value);
+        foreach (var hs in values)
         {
             Console.WriteLine("{0} harfinin sayısı : {1}", hs.Key, hs.Value);
         }
